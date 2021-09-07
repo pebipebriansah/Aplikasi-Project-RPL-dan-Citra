@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText etPassword;
     private EditText etUsername;
-    private ProgressBar progressBar;
     private RequestQueue queue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,8 +1,11 @@
 package ac.id.uniku.projectsatu;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -10,6 +13,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONObject;
 
@@ -27,6 +31,7 @@ public class BiodataActivity extends AppCompatActivity {
     private TextView tvJalurPendaftaran;
     private TextView tvGelombang;
     private TextView tvTanggalMasuk;
+    private ImageView imgOnline;
     private RequestQueue queue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,16 @@ public class BiodataActivity extends AppCompatActivity {
                     tvJalurPendaftaran.setText(data.getString("jalur_pendaftaran"));
                     tvGelombang.setText(data.getString("gelombang"));
                     tvTanggalMasuk.setText(data.getString("tanggal_masuk"));
+                    imgOnline = findViewById(R.id.img_profile);
+
+                    Uri imageOnline = Uri.parse(("https://kadowisudaku.com/wp-content/uploads/2020/04/Universitas-Kuningan.png"));
+                    imgOnline.setScaleType(ImageView.ScaleType.FIT_XY);
+                    imgOnline.setImageURI(imageOnline);
+
+                    Glide.with(BiodataActivity.this)
+                            .load(imageOnline)
+                            .into(imgOnline);
+
                 } else {
                     Log.e("test", "error");
                 }
